@@ -1,7 +1,7 @@
 libnum
 ====================
 
-**Requirements:** python2.7
+**Requirements:** <strike>python2.7</strike> python3
 
 This is a python library for some numbers functions:
 
