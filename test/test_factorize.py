@@ -2,6 +2,7 @@
 #-*- coding:utf-8 -*-
 
 import sys
+from functools import reduce
 sys.path.append("..")
 
 import unittest
