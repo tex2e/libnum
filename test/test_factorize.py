@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 #-*- coding:utf-8 -*-
 
+import sys
+sys.path.append("..")
+
 import unittest
 from libnum.factorize import factorize
 from libnum.factorize import is_power
