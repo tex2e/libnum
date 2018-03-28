@@ -2,6 +2,7 @@
 
 import math
 import random
+from functools import reduce
 
 
 def len_in_bits(n):

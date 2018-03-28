@@ -4,6 +4,7 @@ import operator
 
 from .common import *
 from .stuff import *
+from functools import reduce
 
 
 def has_invmod(a, modulus):
@@ -70,7 +71,7 @@ def nCk_mod(n, k, factors):
     """
     rems = []
     mods = []
-    for p, e in factors.items():
+    for p, e in list(factors.items()):
         rems.append(nCk_mod_prime_power(n, k, p, e))
         mods.append(p ** e)
     return solve_crt(rems, mods)
@@ -82,7 +83,7 @@ def factorial_mod(n, factors):
     """
     rems = []
     mods = []
-    for p, e in factors.items():
+    for p, e in list(factors.items()):
         pe = p ** e
         if n >= pe or factorial_get_prime_pow(n, p) >= e:
             factmod = 0
@@ -115,7 +116,7 @@ def nCk_mod_prime_power(n, k, p, e):
 
         fact_pe = [1]
         acc = 1
-        for x in xrange(1, pe):
+        for x in range(1, pe):
             if x % p == 0:
                 x = 1
             acc = (acc * x) % pe

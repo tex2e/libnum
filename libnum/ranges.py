@@ -2,6 +2,7 @@
 #-*- coding:utf-8 -*-
 
 import json
+from functools import reduce
 
 """
 TODO: fix properties for empty
@@ -128,7 +129,7 @@ class Ranges(object):
         return str(self.segments)
 
     def __contains__(self, other):
-        assert isinstance(other, int) or isinstance(other, long)
+        assert isinstance(other, int) or isinstance(other, int)
         for a, b in self._segments:
             if a <= other <= b:
                 return True

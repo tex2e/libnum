@@ -15,7 +15,7 @@ def has_sqrtmod(a, factors=None):
     if not factors:
         raise ValueError("Factors can't be empty: %s" % factors)
 
-    for p, k in factors.items():
+    for p, k in list(factors.items()):
         if p <= 1 or k <= 0:
             raise ValueError("Not valid prime power: %s**%s" % (p, k))
 
@@ -30,7 +30,7 @@ def sqrtmod(a, factors):
     Yield square roots by product of @factors as modulus.
     @factors - list of (prime, power) tuples
     """
-    coprime_factors = [p ** k for p, k in factors.items()]
+    coprime_factors = [p ** k for p, k in list(factors.items())]
     #n = reduce(operator.mul, coprime_factors)
 
     sqrts = []
@@ -83,7 +83,7 @@ def sqrtmod_prime_power(a, p, k=1):
 
     powers = [1]
     pow_p = 1
-    for i in xrange(k):
+    for i in range(k):
         pow_p *= p
         powers.append(pow_p)
 

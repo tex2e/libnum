@@ -66,7 +66,7 @@ class Curve:
             return False
 
         ys = sqrtmod_prime_power(a, n)
-        return map(lambda y: (x, y), ys)
+        return [(x, y) for y in ys]
 
     def right(self, x):
         """
@@ -83,7 +83,7 @@ class Curve:
         if end is None:
             end = self.module - 1
 
-        for x in xrange(start, end + 1):
+        for x in range(start, end + 1):
             p = self.check_x(x)
             if p == False:
                 continue

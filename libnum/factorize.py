@@ -8,6 +8,7 @@ import math
 import random
 from .primes import primes, prime_test
 from .common import gcd, nroot
+from functools import reduce
 
 
 __all__ = "factorize unfactorize".split()
@@ -96,12 +97,12 @@ def factorize(n):
 
 
 def unfactorize(factors):
-    return reduce(lambda acc, (p, e): acc * (p**e), factors.items(), 1)
+    return reduce(lambda acc, (p, e): acc * (p**e), list(factors.items()), 1)
 
 
 def is_power(n):
     limit = int(math.log(n, 2))
-    for power in xrange(limit, 1, -1):
+    for power in range(limit, 1, -1):
         p = nroot(n, power)
         if pow(p, power) == n:
             return p, power
