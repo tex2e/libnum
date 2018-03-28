@@ -1,5 +1,7 @@
 #-*- coding:utf-8 -*-
 
+import binascii
+
 
 def s2n(s):
     """
@@ -7,7 +9,8 @@ def s2n(s):
     """
     if not len(s):
         return 0
-    return int(s.encode("hex"), 16)
+    # return int(s.encode("hex"), 16)
+    return int(binascii.hexlify(s.encode()), 16)
 
 
 def n2s(n):
@@ -17,7 +20,9 @@ def n2s(n):
     s = hex(n)[2:].rstrip("L")
     if len(s) % 2 != 0:
         s = "0" + s
-    return s.decode("hex")
+    # return s.decode("hex")
+    # return bytes.fromhex(s).decode("utf-8")
+    return binascii.unhexlify(s.encode()).decode("utf-8", "backslashreplace")
 
 
 def s2b(s):

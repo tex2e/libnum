@@ -86,7 +86,7 @@ def factorize(n):
             # / it doesn't fasten factorize much
 
         divizor = _FUNC_REDUCE(n)
-        other = n / divizor
+        other = n // divizor
         factors.append(divizor)
         if other > 1:
             factors.append(other)
@@ -97,7 +97,8 @@ def factorize(n):
 
 
 def unfactorize(factors):
-    return reduce(lambda acc, (p, e): acc * (p**e), list(factors.items()), 1)
+    # return reduce(lambda acc, (p, e): acc * (p**e), list(factors.items()), 1)
+    return reduce(lambda acc, tuple: acc * (tuple[0]**tuple[1]), list(factors.items()), 1)
 
 
 def is_power(n):
